@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aprenda, de forma visual, como funciona a criptografia AES-GCM no navegador." />
+  <title>CriptaLab — laboratório de criptografia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="CriptaLab início"><span class="brand-mark">⌁</span> Cripta<span>Lab</span></a>
+    <nav aria-label="Navegação principal"><a href="#laboratorio">Laboratório</a><a href="#como-funciona">Como funciona</a></nav>
+    <span class="status"><i></i> 100% no navegador</span>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="eyebrow">LABORATÓRIO 01 <span>•</span> AES-GCM</div>
+      <h1>Segredos, protegidos<br /><em>por matemática.</em></h1>
+      <p class="hero-copy">Digite uma senha e veja a criptografia simétrica acontecer em tempo real. Tudo fica no seu navegador — nada é enviado para um servidor.</p>
+      <a class="scroll-link" href="#laboratorio">Explorar o laboratório <span>↓</span></a>
+    </section>
+
+    <section class="lab-section" id="laboratorio">
+      <div class="section-heading"><div><span class="number">01</span><h2>Experimente</h2></div><p>Transforme um texto legível em dados protegidos e faça o caminho inverso.</p></div>
+      <div class="lab-grid">
+        <div class="panel input-panel">
+          <div class="panel-label"><span>ENTRADA</span><span class="live-dot">● ao vivo</span></div>
+          <label for="password">Sua senha ou mensagem</label>
+          <div class="input-wrap"><input id="password" type="password" placeholder="Digite algo secreto..." autocomplete="off" /><button id="toggle-visibility" type="button" aria-label="Mostrar senha">◉</button></div>
+          <div class="hint"><span>↳</span> A mensagem é processada somente na sua máquina.</div>
+          <button class="primary-button" id="encrypt-button" type="button">Criptografar <span>→</span></button>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="panel output-panel">
+          <div class="panel-label"><span>SAÍDA CRIPTOGRAFADA</span><span class="lock">⌁</span></div>
+          <div class="cipher-box"><code id="encrypted-output">Aguardando uma mensagem...</code><button id="copy-button" type="button" aria-label="Copiar texto criptografado" title="Copiar">▣</button></div>
+          <div class="metadata"><span><b id="byte-count">0</b> bytes</span><span>ALGORITMO <b>AES-GCM</b></span><span>IV <b>aleatório</b></span></div>
+          <div class="decrypted-result"><div><span class="check">✓</span><span>DESCRIPTOGRAFADA</span></div><strong id="decrypted-output">—</strong></div>
+        </div>
+      </div>
+      <p class="demo-note"><span>ⓘ</span> Esta é uma demonstração educativa. Em uma aplicação real, nunca exiba a senha descriptografada na tela.</p>
+    </section>
+
+    <section class="how-section" id="como-funciona">
+      <div class="section-heading"><div><span class="number">02</span><h2>Como funciona</h2></div><p>Três etapas simples. Uma ideia poderosa.</p></div>
+      <div class="steps">
+        <article><span class="step-number">01</span><div class="step-icon">↗</div><h3>Texto original</h3><p>Você fornece uma mensagem legível. Ela existe como uma sequência de bytes.</p></article>
+        <article><span class="step-number">02</span><div class="step-icon">✣</div><h3>AES-GCM</h3><p>Uma chave e um vetor de inicialização aleatório transformam os bytes em um conteúdo ilegível.</p></article>
+        <article><span class="step-number">03</span><div class="step-icon">↙</div><h3>Descriptografia</h3><p>A mesma chave reverte o processo e recupera exatamente a mensagem original.</p></article>
+      </div>
+      <div class="explanation"><div class="explanation-icon">✳</div><div><h3>Por que AES-GCM?</h3><p>AES é um padrão de criptografia simétrica amplamente utilizado. O modo GCM, além de esconder o conteúdo, verifica se os dados foram alterados. Nesta demonstração, a Web Crypto API faz todo o trabalho com segurança e desempenho nativos do navegador.</p></div><code>crypto.subtle.encrypt()</code></div>
+    </section>
+  </main>
+  <footer><span>CriptaLab <b>© 2024</b></span><span>Feito para aprender sobre segurança digital.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
